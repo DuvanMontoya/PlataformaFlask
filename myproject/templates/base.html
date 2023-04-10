@@ -1,0 +1,131 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plataforma</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    {% if current_user.is_authenticated %}
+    <div class="toggle-btn" onclick="toggleSidebar()">
+        <i class="fas fa-bars fa-2x" style="color: #007bff;"></i>
+      </div>
+      
+
+    <div id="sidebar" class="sidebar collapsed" style="overflow-y: hidden;">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('register') }}">
+              <i class="fas fa-home"></i>
+              <span class="text">Registrar</span>
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('user_list') }}">
+              <i class="fas fa-user"></i>
+              <span class="text">Usuarios</span>
+            </a>
+          </li>
+          <!-- Agrega más opciones aquí -->
+        </ul>
+      
+        <!-- Agrega el icono de salida al final de la barra lateral -->
+        <div class="fixed-bottom">
+          <a class="nav-link" href="{{ url_for('logout') }}">
+            <i class="fas fa-power-off fa-2x" style="color: #007bff;"></i>
+            <span class="text">Salir</span>
+          </a>
+        </div>
+      </div>     
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            {% block authenticated_content %} {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand mx-auto" href="/">Plataforma</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        {% if current_user.is_authenticated %}
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <span
+              class="user-name text-light"
+              style="
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 1.2rem;
+              "
+              >{{ current_user.username }}</span
+            >
+          </li>
+          <li class="nav-item">
+            <img
+              src="{{ url_for('static', filename='login.png') }}"
+              alt="Avatar"
+              class="avatar rounded-circle"
+              width="40"
+              height="40"
+            />
+          </li>          
+        </ul>
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary" href="{{ url_for('login') }}"
+              >Ingresar</a
+            >
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+    </nav>
+    {% if not current_user.is_authenticated %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {% block non_authenticated_content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("collapsed");
+      }
+    </script>
+    {% block content %} {% endblock %}
+  </body>
+</html>

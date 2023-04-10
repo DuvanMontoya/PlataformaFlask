@@ -1,0 +1,246 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    margin: 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+
+/* Navegación */
+nav {
+    background-color: #333;
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Formularios */
+form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+table th,
+table td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+table th {
+    background-color: #333;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+/* Botones */
+button {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-brand {
+    margin-right: auto;
+}
+
+.navbar-right {
+    margin-left: auto;
+}
+
+.avatar {
+    margin-left: auto;
+}
+
+.user-name {
+    margin-left: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: calc(100% - 60px);
+    width: 62px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    transition: all 0.3s;
+    background-color: #343a40;
+    z-index: 1000;
+}
+
+.sidebar:not(.collapsed) {
+    width: 150px;
+}
+
+.nav-link {
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    background-color: rgba(255, 255, 255, 0.
+
+1);
+}
+
+.nav-link i {
+font-size: 1.5rem;
+margin-right: 10px;
+}
+
+.nav-link .text {
+display: none;
+}
+
+.sidebar:not(.collapsed) .nav-link .text {
+display: inline;
+}
+
+.toggle-btn {
+position: fixed;
+top: 15px;
+left: 15px;
+cursor: pointer;
+z-index: 9999;
+}
+
+.main-content {
+margin-left: 60px;
+transition: margin-left 0.3s;
+padding-top: 60px;
+}
+
+.sidebar:not(.collapsed) ~ .main-content {
+margin-left: 250px;
+}
+
+.container-fluid {
+padding-top: 20px;
+}
+
+.navbar {
+z-index: 999;
+}
+
+.nav-item {
+position: relative;
+}
+
+.nav-item::before {
+content: "";
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 3px;
+background-color: transparent;
+transition: background-color 0.2s;
+}
+
+.nav-item:hover::before {
+background-color: #007bff;
+}
